@@ -25,7 +25,7 @@ if has('unix')
 endif
 
 if has('win32')
-let g:inkscape_graphs_dir = "/Images/"
+let g:inkscape_graphs_dir = "\Images\"
 	function! ink#Ink(image)
 		let b:inline = '\begin{figure}[htbp]
 		\\centering
@@ -33,11 +33,8 @@ let g:inkscape_graphs_dir = "/Images/"
 		\\end{figure}'
 		call append(line('.'),b:inline)
 		normal jo
-		if filereadable(shellescape("%USERPROFILE%/AppData/Roaming/inkscape/templates/default.svg", 1))
-			exe ":!copy" shellescape("%USERPROFILE%/AppData/Roaming/inkscape/templates/default.svg", 1) expand("%:p:h") . g:inkscape_graphs_dir . a:image
-		else 
-			finish
-		endif
+		
+		exe ":!copy" shellescape("%USERPROFILE%\AppData\Roaming\inkscape\templates\default.svg", 1) expand("%:p:h") . g:inkscape_graphs_dir . a:image
 		exe ":!inkscape" expand("%:p:h") . g:inkscape_graphs_dir . a:image
 	endfunction
 endif
