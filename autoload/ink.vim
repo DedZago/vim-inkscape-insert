@@ -27,12 +27,6 @@ endif
 if has('win32')
 let g:inkscape_graphs_dir = "/Images/"
 	function! ink#Ink(image)
-		if getcwd() !~ expand("%:p:h")
-			cd %:p:h
-		endif
-		if !isdirectory(g:inkscape_graphs_dir)
-		    call mkdir(%:p:h . g:inkscape_graphs_dir, "p")
-		endif
 		let b:inline = '\begin{figure}[htbp]
 		\\centering
 		\\includegraphics[width=0.9\textwidth]{' . g:inkscape_graphs_dir . a:image . '.png}
