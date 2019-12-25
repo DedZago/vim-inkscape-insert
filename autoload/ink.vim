@@ -34,10 +34,10 @@ let g:inkscape_graphs_dir = "/Images/"
 		call append(line('.'),b:inline)
 		normal jo
 		if filereadable(shellescape("%USERPROFILE%/AppData/Roaming/inkscape/templates/default.svg", 1))
-			exe ":!copy" shellescape("%USERPROFILE%/AppData/Roaming/inkscape/templates/default.svg", 1) %:p:h . g:inkscape_graphs_dir . a:image
+			exe ":!copy" shellescape("%USERPROFILE%/AppData/Roaming/inkscape/templates/default.svg", 1) expand("%:p:h") . g:inkscape_graphs_dir . a:image
 		else 
 			finish
 		endif
-		exe ":!inkscape" %:p:h . g:inkscape_graphs_dir . a:image
+		exe ":!inkscape" expand("%:p:h") . g:inkscape_graphs_dir . a:image
 	endfunction
 endif
