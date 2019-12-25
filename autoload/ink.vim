@@ -15,13 +15,14 @@ if has('unix')
 		call append(line('.'),b:inline)
 		normal jo
 		if filereadable(expand("~/.config/inkscape/templates/default.svg"))
-			exe ":!cp ~/.config/inkscape/templates/default.svg" g:inkscape_graphs_dir . a:image
+			exe ":!cp ~/.config/inkscape/templates/default.svg" g:inkscape_graphs_dir . a:image . ".svg"
 		elseif filereadable("/usr/share/inkscape/templates/default.svg")
-			exe ":!cp /usr/share/inkscape/templates/default.svg" g:inkscape_graphs_dir . a:image
+			exe ":!cp /usr/share/inkscape/templates/default.svg" g:inkscape_graphs_dir . a:image . ".svg"
 		else 
 			finish
 		endif
-		exe ":!inkscape" g:inkscape_graphs_dir . a:image
+		exe ":!export PATH=/usr/bin/:${PATH} && inkscape" g:inkscape_graphs_dir . a:image . ".svg"
+		exe ":!inkscape" g:inkscape_graphs_dir . a:image . ".svg" "-e" g:inkscape_graphs_dir . a:image . ".png" "--without-gui" "-D"
 	endfunction
 endif
 
