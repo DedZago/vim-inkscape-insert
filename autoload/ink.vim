@@ -6,7 +6,11 @@ function! ink#Ink(image)
 	if !isdirectory(g:inkscape_graphs_dir)
 	    call mkdir(g:inkscape_graphs_dir, "p")
 	endif
-	let b:inline = '![' . a:image . ']('. g:inkscape_graphs_dir . a:image . '.eps)\'
+	let b:inline = '\begin{figure}[htbp]
+	\centering
+	\includesvg{' . g:inkscape_graphs_dir . a:image . '.svg}
+	\caption{svg image}
+	\end{figure}'
 	call append(line('.'),b:inline)
 	normal jo
 	if filereadable(expand("~/.config/inkscape/templates/default.svg"))
