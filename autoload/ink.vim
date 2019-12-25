@@ -25,7 +25,7 @@ if has('unix')
 endif
 
 if has('win32')
-let g:inkscape_graphs_dir = "\Images\"
+let g:inkscape_graphs_dir = shellescape("\Images\", 1)
 	function! ink#Ink(image)
 		let b:inline = '\begin{figure}[htbp]
 		\\centering
