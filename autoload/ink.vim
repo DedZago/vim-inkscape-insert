@@ -6,10 +6,10 @@ function! ink#Ink(image)
 	if !isdirectory(g:inkscape_graphs_dir)
 	    call mkdir(g:inkscape_graphs_dir, "p")
 	endif
-	let b:inline = '\\begin{figure}[htbp]\n
-	\\centering\n
-	\\includesvg{' . g:inkscape_graphs_dir . a:image . '.svg}\n
-	\\caption{svg image}\n
+	let b:inline = '\begin{figure}[htbp]
+	\\centering
+	\\includegraphics{' . g:inkscape_graphs_dir . a:image . '.png}
+	\\caption{svg image}
 	\\end{figure}'
 	call append(line('.'),b:inline)
 	normal jo
