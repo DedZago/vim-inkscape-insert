@@ -8,7 +8,7 @@ function! ink#Ink(image)
 	endif
 	let b:inline = '\begin{figure}[htbp]
 	\\centering
-	\\includegraphics{' . g:inkscape_graphs_dir . a:image . '.png}
+	\\includegraphics[width=0.9\\textwidth]{' . g:inkscape_graphs_dir . a:image . '.png}
 	\\caption{svg image}
 	\\end{figure}'
 	call append(line('.'),b:inline)
