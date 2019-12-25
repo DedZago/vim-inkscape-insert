@@ -39,8 +39,8 @@ if has('win32')
 		\\end{figure}'
 		call append(line('.'),b:inline)
 		normal jo
-		if filereadable(expand("\%USERPROFILE\%\\AppData\\Roaming\\inkscape\\templates\\default.svg"))
-			exe ":!copy \%USERPROFILE\%\\AppData\\Roaming\\inkscape\\templates\\default.svg" g:inkscape_graphs_dir . a:image
+		if filereadable(shellescape("%USERPROFILE%/AppData/Roaming/inkscape/templates/default.svg", 1))
+			exe ":!copy" shellescape("%USERPROFILE%/AppData/Roaming/inkscape/templates/default.svg", 1) g:inkscape_graphs_dir . a:image
 		else 
 			finish
 		endif
