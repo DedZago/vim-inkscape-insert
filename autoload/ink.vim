@@ -1,4 +1,5 @@
 if has('unix')
+let g:inkscape_graphs_dir = "./Images/"
 	function! ink#Ink(image)
 		if getcwd() !~ expand("%:p:h")
 			cd %:p:h
@@ -29,12 +30,13 @@ let g:inkscape_graphs_dir = "\\Images\\"
 	function! ink#Ink(image)
 		let b:inline = '\begin{figure}[htbp]
 		\\centering
-		\\includegraphics[width=0.9\textwidth]{' . g:inkscape_graphs_dir . a:image . '.png}
+		\\includegraphics[width=0.9\textwidth]{' . './Images/' . a:image . '.png}
 		\\end{figure}'
 		call append(line('.'),b:inline)
 		normal jo
 		
-		exe ":!copy" expand("%:p:h") . g:inkscape_graphs_dir . "default.svg" expand("%:p:h") . g:inkscape_graphs_dir . a:image
-		exe ":!inkscape" expand("%:p:h") . g:inkscape_graphs_dir . a:image
+		exe ":!copy" expand("%:p:h") . g:inkscape_graphs_dir . "default.svg" expand("%:p:h") . g:inkscape_graphs_dir . a:image . ".svg"
+		exe ":!inkscape" expand("%:p:h") . g:inkscape_graphs_dir . a:image . ".svg"
+		exe ":!inkscape" expand("%:p:h") . g:inkscape_graphs_dir . a:image . ".svg" "-e" expand("%:p:h") . g:inkscape_graphs_dir . a:image . ".png" "--without-gui" "-D"
 	endfunction
 endif
