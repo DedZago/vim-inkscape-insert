@@ -9,7 +9,7 @@ let g:inkscape_graphs_dir = "./Images/"
 		endif
 		let b:inline = '\begin{figure}[htbp]
 		\\centering
-		\\includegraphics[width=0.9\textwidth]{' . g:inkscape_graphs_dir . a:image . '.png}
+		\\includegraphics[width=0.9\textwidth, dpi=1000]{' . g:inkscape_graphs_dir . a:image . '.png}
 		\\end{figure}'
 		call append(line('.'),b:inline)
 		normal jo
@@ -21,7 +21,7 @@ let g:inkscape_graphs_dir = "./Images/"
 			finish
 		endif
 		exe ":!export PATH=/usr/bin/:${PATH} && inkscape" g:inkscape_graphs_dir . a:image . ".svg"
-		exe ":!inkscape" g:inkscape_graphs_dir . a:image . ".svg" "-e" g:inkscape_graphs_dir . a:image . ".png" "--without-gui" "-D"
+		exe ":!inkscape" g:inkscape_graphs_dir . a:image . ".svg" "-e" g:inkscape_graphs_dir . a:image . ".png" "--without-gui" "-d 1000" "-D"
 	endfunction
 endif
 
@@ -30,7 +30,7 @@ let g:inkscape_graphs_dir = "\\Images\\"
 	function! ink#Ink(image)
 		let b:inline = '\begin{figure}[htbp]
 		\\centering
-		\\includegraphics[width=0.9\textwidth]{' . './Images/' . a:image . '.png}
+		\\includegraphics[width=0.9\textwidth, dpi=1000]{' . './Images/' . a:image . '.png}
 		\\end{figure}'
 		call append(line('.'),b:inline)
 		normal jo
