@@ -9,7 +9,9 @@ let g:inkscape_graphs_dir = "./Images/"
 		endif
 		let b:inline = '\begin{figure}[htbp]
 		\\centering
-		\\includegraphics[width=0.9\textwidth, dpi=1000]{' . g:inkscape_graphs_dir . a:image . '.png}
+		\\input{'. g:inkscape_graphs_dir . a:image . '.pdf_tex}
+		\\caption{}
+		\\label{fig:}
 		\\end{figure}'
 		call append(line('.'),b:inline)
 		normal jo
@@ -29,8 +31,10 @@ if has('win32')
 let g:inkscape_graphs_dir = "\\Images\\"
 	function! ink#Ink(image)
 		let b:inline = '\begin{figure}[htbp]
-		\\centering
-		\\includegraphics[width=0.9\textwidth, dpi=1000]{' . './Images/' . a:image . '.png}
+		\\centering		
+		\\input{' . './Images/' . a:image . '.pdf_tex}
+		\\caption{}
+		\\label{fig:}
 		\\end{figure}'
 		call append(line('.'),b:inline)
 		normal jo
