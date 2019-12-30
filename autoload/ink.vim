@@ -21,7 +21,7 @@ let g:inkscape_graphs_dir = "./Images/"
 			finish
 		endif
 		exe ":!export PATH=/usr/bin/:${PATH} && inkscape" g:inkscape_graphs_dir . a:image . ".svg"
-		exe ":!inkscape" g:inkscape_graphs_dir . a:image . ".svg" "-e" g:inkscape_graphs_dir . a:image . ".png" "--without-gui" "-d 1000" "-D"
+		exe ":!inkscape" g:inkscape_graphs_dir . a:image . ".svg" "-export-pdf=" . g:inkscape_graphs_dir . a:image . ".pdf" "--without-gui" "--export-latex" "-D"
 	endfunction
 endif
 
@@ -37,6 +37,6 @@ let g:inkscape_graphs_dir = "\\Images\\"
 		
 		exe ":!copy" expand("%:p:h") . g:inkscape_graphs_dir . "default.svg" expand("%:p:h") . g:inkscape_graphs_dir . a:image . ".svg"
 		exe ":!inkscape" expand("%:p:h") . g:inkscape_graphs_dir . a:image . ".svg"
-		exe ":!inkscape" expand("%:p:h") . g:inkscape_graphs_dir . a:image . ".svg" "-e" expand("%:p:h") . g:inkscape_graphs_dir . a:image . ".png" "--without-gui" "-d 1000" "-D"
+		exe ":!inkscape" expand("%:p:h") . g:inkscape_graphs_dir . a:image . ".svg" "-export-pdf=" . expand("%:p:h") . g:inkscape_graphs_dir . a:image . ".pdf" "--without-gui" "-D"
 	endfunction
 endif
