@@ -21,7 +21,7 @@ let g:inkscape_graphs_dir = "./Images/"
 			finish
 		endif
 		exe ":!export PATH=/usr/bin/:${PATH} && inkscape" g:inkscape_graphs_dir . a:image . ".svg"
-		exe ":!inkscape" g:inkscape_graphs_dir . a:image . ".svg" "-export-pdf=" . g:inkscape_graphs_dir . a:image . ".pdf" "--without-gui" "--export-latex" "-D"
+		exe ":!inkscape" g:inkscape_graphs_dir . a:image . ".svg" "-export-pdf="a:image . ".pdf" "--without-gui" "--export-latex" "-D"
 	endfunction
 endif
 
