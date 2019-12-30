@@ -37,6 +37,6 @@ let g:inkscape_graphs_dir = "\\Images\\"
 		
 		exe ":!copy" expand("%:p:h") . g:inkscape_graphs_dir . "default.svg" expand("%:p:h") . g:inkscape_graphs_dir . a:image . ".svg"
 		exe ":!inkscape" expand("%:p:h") . g:inkscape_graphs_dir . a:image . ".svg"
-		exe ":!inkscape" expand("%:p:h") . g:inkscape_graphs_dir . a:image . ".svg" "-export-pdf=" . expand("%:p:h") . g:inkscape_graphs_dir . a:image . ".pdf" "--without-gui" "-D"
+		exe ":!inkscape" expand("%:p:h") . g:inkscape_graphs_dir . a:image . ".svg" "--export-pdf=" . expand("%:p:h") . g:inkscape_graphs_dir . a:image . ".pdf" "--without-gui" "-D"
 	endfunction
 endif
