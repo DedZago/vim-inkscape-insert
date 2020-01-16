@@ -1,4 +1,4 @@
-#vim-inkscape-insert
+# vim-inkscape-insert
 
 A plugin to create and insert drawings (in .pdf_tex format) in latex files and 
 edit them in inkscape without leaving vim.
