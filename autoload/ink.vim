@@ -7,11 +7,11 @@ let g:inkscape_graphs_dir = "./Images/"
 		if !isdirectory(g:inkscape_graphs_dir)
 		    call mkdir(g:inkscape_graphs_dir, "p")
 		endif
-		let b:inline = '\begin{figure}[htbp]
-		\\centering
-		\\input{'. g:inkscape_graphs_dir . a:image . '.pdf_tex}
-		\\caption{}
-		\\label{fig:}
+		let b:inline = '\begin{figure}[htbp]\n
+		\\centering \n
+		\\input{'. g:inkscape_graphs_dir . a:image . '.pdf_tex} \n
+		\\caption{} \n
+		\\label{fig:} \n
 		\\end{figure}'
 		call append(line('.'),b:inline)
 		normal jo
